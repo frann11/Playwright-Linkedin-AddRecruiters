@@ -5,11 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "dotenv": "^10.0.0",
+    "node": "^17.1.0",
     "playwright": "^1.16.3"
   },
   "devDependencies": {},
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

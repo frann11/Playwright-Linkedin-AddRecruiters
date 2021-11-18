@@ -57,9 +57,9 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
          let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas!. Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!`
          
          await page.type('textarea',message)
-         await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
-         let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
-         await enviar.click()
+         //await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
+         //let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
+         //await enviar.click()
          counter++
         }
 
@@ -73,4 +73,4 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     }
 } 
 
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: myName})
+addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: 'Francisco'})
