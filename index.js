@@ -36,27 +36,30 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
 
    let counter = 0
    while (counter < cuantity){
-       await page.waitForSelector('button')
+        await page.waitForSelector('button')
 
-       // search for "Conectar" span element inside button
-       let connectSpan = await page.$$("//*[text()[contains(.,'Conectar')]]")
-     for (span of connectSpan){
+        // search for "Conectar" span element inside button
+        let connectSpan = await page.$$("//*[text()[contains(.,'Conectar')]]")
+      for (span of connectSpan){
          
-        // get parent element of span
-        let button = await button.$('//..')
+         // get parent element of span
+         let button = await button.$('//..')
 
-        // get name of person to add via Aria-label attribute of button
-        let nombre = (await boton.getAttribute('aria-label')).split(' ')[2]
-        await button.click()
-        await page.waitForSelector("//*[text()[contains(.,'Añadir una nota')]]")
-        let addNote = await page.$("//*[text()[contains(.,'Añadir una nota')]]")
-        addNote.click()
-        await page.waitForSelector('textarea')
+         // get name of person to add via Aria-label attribute of button
+         let nombre = (await boton.getAttribute('aria-label')).split(' ')[2]
+         await button.click()
+         await page.waitForSelector("//*[text()[contains(.,'Añadir una nota')]]")
+         let addNote = await page.$("//*[text()[contains(.,'Añadir una nota')]]")
+         addNote.click()
+         await page.waitForSelector('textarea')
         
-        /// message to add on connect invite
-        let message = `hola ${nombre} contratame!`
-        await page.type('textarea',message)
-        counter++
+         /// message to add on connect invite
+         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas!. Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!`
+         await page.type('textarea',message)
+         await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
+         let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
+         await enviar.click()
+         counter++
         }
 
         /// scroll to bottom of page
@@ -64,11 +67,9 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
      
         /// go to next page
         CURRENT_PAGE++
+        let URL = `https://www.linkedin.com/search/results/people/?keywords=it%20recruiter&amp;origin=CLUSTER_EXPANSION&page=${CURRENT_PAGE}`
         await page.goto(URL)
     }
 } 
 
-// hola! $nombre , Soy $miNombre desarrolad@r fullstack, te agrego para estar al pendiente de tus ofertas!
-// Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!
-//const nota = ` Hola ${nombreRecruiter}!  soy Francisco desarrollador fullstack junior, te agrego para estar al pendiente de tus busquedas, Esta invitacion la realice de manera automatizada con playwright! :) te invito a ver mi profileSearched y repositorio de github saludos!`
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName:'Francisco'})
+addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: addName})
