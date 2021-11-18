@@ -19,6 +19,7 @@ addProfiles({profileSearched: ProfileToSearch, cuantity: CuantityToAdd, myName: 
 ```
 
 - replace message in file with your personal message if wanted
+- run index.js
 
 ### TODO:
 - learn about kubernetes 
