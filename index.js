@@ -2,7 +2,7 @@ const {chromium} = require('playwright')
 const fs = require('fs')
 require('dotenv').config()
 
-const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearched, cuantity}) {
+const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearched, cuantity, myName}) {
     const browser = await chromium.launch({ headless: false})
     const context = await browser.newContext();
     const page = await context.newPage()
@@ -30,23 +30,23 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     await page.type(".search-global-typeahead__input",profileSearched)
     await page.keyboard.press('Enter')
     await page.waitForNavigation()
-    let CURRENT_PAGE = 1
+    let CURRENT_PAGE = 2
     let URL = `https://www.linkedin.com/search/results/people/?keywords=it%20recruiter&amp;origin=CLUSTER_EXPANSION&page=${CURRENT_PAGE}`
     await page.goto(URL)
 
    let counter = 0
    while (counter < cuantity){
-        await page.waitForSelector('button')
+        await page.waitForSelector("//*[text()[contains(.,'Conectar')]]")
 
         // search for "Conectar" span element inside button
         let connectSpan = await page.$$("//*[text()[contains(.,'Conectar')]]")
       for (span of connectSpan){
          
          // get parent element of span
-         let button = await button.$('//..')
+         let button = await span.$('//..')
 
          // get name of person to add via Aria-label attribute of button
-         let nombre = (await boton.getAttribute('aria-label')).split(' ')[2]
+         let nombre = (await button.getAttribute('aria-label')).split(' ')[2]
          await button.click()
          await page.waitForSelector("//*[text()[contains(.,'Añadir una nota')]]")
          let addNote = await page.$("//*[text()[contains(.,'Añadir una nota')]]")
@@ -54,8 +54,8 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
          await page.waitForSelector('textarea')
         
          /// message to add on connect invite
-         let message =  // AddyourpersonalMessage
-
+         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas!. Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!`
+         
          await page.type('textarea',message)
          await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
          let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
@@ -73,4 +73,4 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     }
 } 
 
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: addName})
+addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: 'Francisco'})
