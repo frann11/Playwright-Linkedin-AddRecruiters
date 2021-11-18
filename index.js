@@ -3,6 +3,7 @@ const fs = require('fs')
 require('dotenv').config()
 
 const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearched, cuantity, myName}) {
+    console.log(cuantity)
     const browser = await chromium.launch({ headless: false})
     const context = await browser.newContext();
     const page = await context.newPage()
@@ -54,12 +55,12 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
          await page.waitForSelector('textarea')
         
          /// message to add on connect invite
-         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas!. Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!`
+         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas. saludos!`
          
          await page.type('textarea',message)
-         //await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
-         //let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
-         //await enviar.click()
+         await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
+         let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
+         await enviar.click()
          counter++
         }
 
@@ -73,4 +74,4 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     }
 } 
 
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: 'Francisco'})
+addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: myName})
