@@ -1,0 +1,24 @@
+{
+  "name": "linkedinaddrecruiters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "playwright": "^1.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frann11/Playwright-Linkedin-AddRecruiters.git"
+  },
+  "author": "Francisco Nicolas Berthet Cosentino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frann11/Playwright-Linkedin-AddRecruiters/issues"
+  },
+  "homepage": "https://github.com/frann11/Playwright-Linkedin-AddRecruiters#readme"
+}
