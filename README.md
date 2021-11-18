@@ -5,10 +5,6 @@ In an effort to expand my network I created a playwright script to automatically
 ```javascript
 npm install
 ```
-- After installing dependencies
-```javascript
-npm start
-```
 
 - create a .env file with the following variables
 ```javascript
@@ -24,6 +20,10 @@ addProfiles({profileSearched: ProfileToSearch, cuantity: CuantityToAdd, myName: 
 
 - replace message in file with your personal message if wanted
 - run index.js
+
+```javascript
+npm start
+```
 
 ### TODO:
 - learn about kubernetes 
