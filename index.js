@@ -31,7 +31,7 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     await page.type(".search-global-typeahead__input",profileSearched)
     await page.keyboard.press('Enter')
     await page.waitForNavigation()
-    let CURRENT_PAGE = 2
+    let CURRENT_PAGE = 1
     let URL = `https://www.linkedin.com/search/results/people/?keywords=it%20recruiter&amp;origin=CLUSTER_EXPANSION&page=${CURRENT_PAGE}`
     await page.goto(URL)
 
@@ -55,7 +55,7 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
          await page.waitForSelector('textarea')
         
          /// message to add on connect invite
-         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas. saludos!`
+         // let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas. saludos!`
          
          await page.type('textarea',message)
          await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
@@ -74,4 +74,5 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     }
 } 
 
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: myName})
+// ex: addProfiles({profileSearched: 'IT Recruiter', cuantity: 30, myName: myName})
+addProfiles({profileSearched: ProfileToSearch, cuantity: Cuantity, myName: myName})
