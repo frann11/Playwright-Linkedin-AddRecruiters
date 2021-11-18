@@ -54,7 +54,8 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
          await page.waitForSelector('textarea')
         
          /// message to add on connect invite
-         let message = ` hola ${nombre}! , Soy ${myName} desarrollador fullstack javascript, te agrego para estar al pendiente de tus busquedas!. Esta invitacion la realice mediante automatizacion con playwright :) Te invito a ver mi perfil y mi repositorio!`
+         let message =  // AddyourpersonalMessage
+
          await page.type('textarea',message)
          await page.waitForSelector("//*[text()[contains(.,'Enviar')]]")
          let enviar = await page.$("//*[text()[contains(.,'Enviar')]]")
