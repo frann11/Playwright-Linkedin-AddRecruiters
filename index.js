@@ -73,4 +73,4 @@ const addProfiles = async function automateAddProfilesOnLinkedin ({profileSearch
     }
 } 
 
-addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: 'Francisco'})
+addProfiles({profileSearched: 'IT Recruiter', cuantity: '30', myName: myName})
