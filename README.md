@@ -5,6 +5,10 @@ In an effort to expand my network I created a playwright script to automatically
 ```javascript
 npm install
 ```
+- After installing dependencies
+```javascript
+npm start
+```
 
 - create a .env file with the following variables
 ```javascript
